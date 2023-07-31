@@ -1,0 +1,41 @@
+services:
+    api.template.dev.build:
+        container_name: api.template.dev.build
+        hostname: api.template.dev.build
+        image: api.template.dev.build
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        ports:
+            - 8080:8080
+
+    api.template.dev.buildm1:
+        container_name: api.template.dev.buildm1
+        hostname: api.template.dev.buildm1
+        image: api.template.dev.buildm1
+        build:
+            context: ./
+            dockerfile: docker-local/Dockerfile.buildm1
+        ports:
+            - 8080:8080
+
+    api.template.dev:
+        container_name: api.template.dev
+        hostname: api.template.dev
+        image: api.template.dev
+        build:
+            context: ./
+            dockerfile:  docker-local/Dockerfile
+        ports:
+            - 8080:8080
+
+    api.template.dev.m1:
+        container_name: api.template.dev.m1
+        hostname: api.template.dev.m1
+        image: api.template.dev.m1
+        build:
+            context: ./
+            dockerfile: docker-local/Dockerfile.m1
+        ports:
+            - 8080:8080
+

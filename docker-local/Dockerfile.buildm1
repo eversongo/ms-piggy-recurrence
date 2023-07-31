@@ -1,0 +1,20 @@
+# BUILD stage
+FROM 289208114389.dkr.ecr.us-east-1.amazonaws.com/maven:3.8.4-openjdk-17-slim-m1 AS build
+WORKDIR /build
+# DevOps team puts settings.xml in the root of the repo
+COPY docker-local/settings.xml .
+COPY pom.xml .
+COPY src src
+RUN mvn clean install -s settings.xml
+#
+# RELEASE stage
+#
+FROM 289208114389.dkr.ecr.us-east-1.amazonaws.com/picpay/java:17-slim-m1 AS release
+COPY --from=build /build/target/*.jar /app.jar
+# docker-entrypoint.sh loads the env vars into the app.
+# This is considered a safer approach over docker envs
+# cause only the app has access to them, not the whole
+# container
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]

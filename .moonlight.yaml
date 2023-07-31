@@ -1,0 +1,14 @@
+sast:
+  enabled: true
+sonar:
+  enabled: true
+  type: other
+build:
+  enabled: true
+deploy:
+  type: argocd
+steps:
+  - name: unit-tests
+    image: 289208114389.dkr.ecr.us-east-1.amazonaws.com/maven:3.8.5-openjdk-17-slim
+    commands:
+      - mvn clean install

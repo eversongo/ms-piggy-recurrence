@@ -1,0 +1,33 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "ms-piggy-recurrence"
+  tags:
+    - java
+    - spring-boot
+    - newrelic
+    - api
+    - apm
+  description: "O ms-piggy-recurrence é o serviço responsável por fazer o investimento recorrente em um cofrinho.  "
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: "ms-piggy-recurrence"
+    github.com/project-slug: "PicPay/ms-piggy-recurrence"
+    sonarqube.org/project-key: "PicPay_ms-piggy-recurrence"
+    newrelic.com/app-name: "ms-piggy-recurrence"
+  labels:
+    moonlight.picpay/language: java
+    moonlight.picpay/framework: spring-boot
+    moonlight.picpay/monitoring: newrelic
+    moonlight.picpay/monitoring-strategy: apm
+  links:
+    - url: https://picpay.atlassian.net/wiki/spaces/SAV/overview?homepageId=2536636544
+      title: Jira Board
+      icon: dashboard
+    - url: https://picpay.atlassian.net/wiki/spaces/SAV/pages/3233349780/ms-piggy-recurrence
+      title: Confluence Docs
+      icon: dashboard
+spec:
+  lifecycle: production
+  owner: piggyinvest
+  type: service
